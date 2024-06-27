@@ -199,6 +199,7 @@ def fetch_data_with_names(tickers):
 def fetch_predictions():
     """
     Loads predicted prices that are predicted using the machine learning model 
+    (refer to 'models/machine_learning_model' for the model that is used)
     from a CSV file into a DataFrame. These predictions are used for the one year horizon 
     portfolio optimization
 
@@ -358,6 +359,11 @@ def results():
     investment_horizon = int(re.search(r'\d+', investment_horizon_str).group()) # Parse horizon to integer
     
     # Dictionary mapping risk level and investment horizon to specific portfolios
+    # The allocation of assets into different risk levels and investment horizons is primarily based on their historical volatility.
+    # The volatility calculations and categorization logic are detailed in the 'models/determining_risk_assets' file.
+    # This file includes a methodology for assessing asset volatility and categorizing them accordingly into low, medium, or high risk categories.
+    # Additionally, some assets are placed into different risk categories than their volatility might suggest to ensure a diverse range of asset classes in each portfolio.
+    # This approach helps in achieving a balanced and diversified investment portfolio tailored to different investor profiles and time horizons.
     portfolios = {
         # Key is a tuple (risk_level, investment_horizon), value is list of tickers
         (1, 1): ['BTC-USD', 'GC=F', 'SI=F', 'VT', 'VWO', 'SPY', 'QQQ', 'SOXX', 'PG', 'KO', 'PEP', 'VZ', 'MCD', 'WMT', 'MO', 'UL', 'PM'],
