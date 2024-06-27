@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<!-- Specify the document type to ensure the browser renders the page in standards mode -->
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <!-- Ensure the page is responsive and scales correctly on different devices -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Title of the page as shown in the browser tab -->
+    <title>Investment Advice</title>
+    <!-- Link to Bootstrap's CSS for styling, pulled from a CDN for convenience and faster loading -->
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+    <!-- Main content container using Bootstrap for responsive layout -->
+    <div class="container mt-5">
+        <!-- Page heading with additional bottom margin for spacing -->
+        <h1 class="mb-4">Your Optimized Investment Portfolio</h1>
+        <!-- Paragraph describing the purpose of the page -->
+        <p>The following is your optimized investment portfolio based on your risk profile and investment horizon. You should invest your funds in these assets, distributed according to the percentages shown:</p>
+        <!-- Responsive table to display the portfolio assets using Bootstrap classes -->
+        <table class="table table-striped">
+            <!-- Table header with a dark background for contrast -->
+            <thead class="thead-dark">
+                <tr>
+                    <th>Ticker</th> <!-- Column heading for the stock ticker symbol -->
+                    <th>Asset Name</th> <!-- Column heading for the name of the asset -->
+                    <th>Allocation (%)</th> <!-- Column heading for the percentage allocation of the asset -->
+                </tr>
+            </thead>
+            <!-- Table body where data is dynamically inserted using server-side templating -->
+            <tbody>
+                <!-- Loop through each asset in the portfolio, passed from the server-side code -->
+                {% for asset, (weight, name) in portfolio.items() %}
+                    <tr>
+                        <td>{{ asset }}</td> <!-- Display the ticker symbol -->
+                        <td>{{ name }}</td> <!-- Display the asset name -->
+                        <td>{{ weight|round(2) }}</td> <!-- Display the allocation percentage, rounded to two decimals -->
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+        <!-- Note to explain special symbols in the Asset Name column -->
+        <p class="mt-4"><strong>Note:</strong> If the Asset Name column in your optimized portfolio contains a '*', then the tickers 'GC=F' and 'SI=F' respectively represent Gold and Silver.</p>
+    </div>
+    <!-- Include jQuery and Bootstrap's JavaScript for functionality such as responsive navigation -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.2/dist/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>

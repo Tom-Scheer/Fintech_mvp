@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<!-- Define the document type and language for proper rendering and accessibility -->
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <!-- Ensure proper rendering and touch zooming on mobile devices -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Title of the webpage displayed in the browser tab -->
+    <title>Welcome to Smartfolio</title>
+    <!-- Link to Bootstrap CSS for styling, hosted via CDN for easy integration -->
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+    <!-- Main container element styled with Bootstrap for spacing and responsiveness -->
+    <div class="container mt-5">
+        <!-- Main heading of the page -->
+        <h1>Welcome to Smartfolio</h1>
+        <!-- Introduction paragraph explaining the purpose of the questionnaire -->
+        <p>Please fill in the following questionnaire to determine your risk level and investment horizon. Once submitted, we will determine your optimal portfolio.</p>
+        <!-- Form submission to the root URL (POST method) to handle user input -->
+        <form action="/" method="post">
+            <!-- Loop through each question and its options provided by the server-side template engine -->
+            {% for question, opts in questions_and_options %}
+                <!-- Question block with margin bottom for spacing -->
+                <div class="mb-3">
+                    <h3>{{ question }}</h3> <!-- Display the question -->
+                    <!-- Loop through each option for the current question -->
+                    {% for opt in opts %}
+                        <!-- Radio button input for selecting an option, styled with Bootstrap classes -->
+                        <div class="form-check">
+                            <input class="form-check-input" type="radio" name="{{ question }}" id="{{ question }}_{{ loop.index }}" value="{{ opt }}" required>
+                            <label class="form-check-label" for="{{ question }}_{{ loop.index }}">{{ opt }}</label>
+                        </div>
+                    {% endfor %}
+                </div>
+            {% endfor %}
+            <!-- Submit button for the form, styled with Bootstrap primary button classes -->
+            <button type="submit" class="btn btn-primary">Submit</button>
+        </form>
+    </div>
+    <!-- Include jQuery and Bootstrap JS via CDN for functionality like responsive navbar and modal -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.2/dist/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>

@@ -1,0 +1,50 @@
+/* Base Styles */
+/* Apply base font and margin to the entire body to ensure consistency */
+body {
+    font-family: Arial, sans-serif; /* Use Arial as the primary font, with a generic sans-serif fallback */
+    margin: 20px; /* Uniform margin around the content for spacing from browser edges */
+}
+
+/* Header Styles */
+/* Style for main headings to ensure they stand out */
+h1 {
+    color: #333; /* Dark grey color for heading text for better readability */
+}
+
+/* Form Styles */
+/* General form styling to space out elements vertically */
+form {
+    margin-top: 20px; /* Adds space above the form element */
+}
+
+/* Label Styles */
+/* Ensure labels are block level with space around them for clarity */
+label {
+    display: block; /* Makes label a block element to occupy its own line */
+    margin: 10px 0 5px; /* Adds top and bottom margin for spacing, more on top */
+}
+
+/* Input and Select Styles */
+/* Uniform styling for all text inputs and select boxes to ensure consistency */
+input, select {
+    padding: 8px; /* Padding inside the input/select elements for better text visibility */
+    width: 100%; /* Full width to occupy container, making forms look uniform */
+    box-sizing: border-box; /* Includes padding and border in the element's total width and height */
+}
+
+/* Submit Button Styles */
+/* Styles specifically for the submit button to make it stand out and be easy to click */
+input[type="submit"] {
+    background-color: #4CAF50; /* Green background for visibility and aesthetics */
+    color: white; /* Text color for contrast against the button background */
+    border: none; /* No border to keep the button clean and modern */
+    padding: 10px 20px; /* Adequate padding for clickable area */
+    cursor: pointer; /* Pointer cursor on hover to indicate it's clickable */
+    margin-top: 20px; /* Space above the button to separate it from other form elements */
+}
+
+/* Submit Button Hover Effect */
+/* Slightly darker green on hover for a subtle interaction feedback */
+input[type="submit"]:hover {
+    background-color: #45a049; /* Darker shade of green for hover state */
+}
