@@ -183,7 +183,7 @@ def fetch_data_with_names(tickers):
     Returns:
         tuple: Mean returns, covariance matrix, and dictionary of ticker names
     """
-    data = yf.download(tickers, start="2010-01-01", end="2024-06-19")['Adj Close']
+    data = yf.download(tickers, start="2010-01-01", end="2024-06-27")['Adj Close']
     returns = data.pct_change().dropna()
     names = {}
     for ticker in tickers:
@@ -209,7 +209,7 @@ def fetch_predictions():
     return pd.read_csv('data/predictions.csv', index_col='ticker')
 
 # Define the objective function for the optimization
-def objective_function(weights, mean_returns, cov_matrix, risk_free_rate=0.01):
+def objective_function(weights, mean_returns, cov_matrix, risk_free_rate=0.05):
     """
     Calculates the negative Sharpe ratio of a portfolio. 
     For the long term horizon. 
@@ -250,7 +250,7 @@ def optimize_portfolio_one_year(predictions, data, tickers, bounds):
     # Compute daily renturns and annual covariance matrix 
     returns = data[tickers].pct_change().dropna()
     cov_matrix = returns.cov() * 252
-    risk_free_rate = 0.01
+    risk_free_rate = 0.05
     
     # Define the negative Sharpe ratio function
     def neg_sharpe_ratio(weights, expected_returns, cov_matrix, risk_free_rate):
@@ -388,7 +388,7 @@ def results():
 
         if tickers:
             # Download historical price data from Yahoo Finance. used a shorter time period same as used in the model for predictions
-            data = yf.download(tickers, start="2020-01-01", end="2024-06-19")['Adj Close']
+            data = yf.download(tickers, start="2020-01-01", end="2024-06-27")['Adj Close']
             # Calculate mean returns, covariance matrix, and retrieve asset names
             mean_returns, cov_matrix, names = fetch_data_with_names(tickers)  
             # Set bounds for portfolio weights (none can exceed 15%)
