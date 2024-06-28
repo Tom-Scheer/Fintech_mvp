@@ -199,7 +199,7 @@ def fetch_data_with_names(tickers):
 def fetch_predictions():
     """
     Loads predicted prices that are predicted using the machine learning model 
-    (refer to 'models/machine_learning_model' for the model that is used)
+    (refer to 'models/machine_learning_model.py' for the model that is used)
     from a CSV file into a DataFrame. These predictions are used for the one year horizon 
     portfolio optimization
 
@@ -360,7 +360,7 @@ def results():
     
     # Dictionary mapping risk level and investment horizon to specific portfolios
     # The allocation of assets into different risk levels and investment horizons is primarily based on their historical volatility.
-    # The volatility calculations and categorization logic are detailed in the 'models/determining_risk_assets' file.
+    # The volatility calculations and categorization logic are detailed in the 'models/determining_risk_assets.py' file.
     # This file includes a methodology for assessing asset volatility and categorizing them accordingly into low, medium, or high risk categories.
     # Additionally, some assets are placed into different risk categories than their volatility might suggest to ensure a diverse range of asset classes in each portfolio.
     # This approach helps in achieving a balanced and diversified investment portfolio tailored to different investor profiles and time horizons.
